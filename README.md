@@ -7,11 +7,11 @@ Solutions for some problems of [Grind 75](https://www.techinterviewhandbook.org/
 ```HTML
 var twoSum = function(nums, target) {
   let map = {};
-  
+
   for (let i = 0; i < nums.length; i++) {
     let n = nums[i],
     part = target - n;
-    
+
     if(map[part] >= 0) return [map[part], i];
     else map[n] = i;
   }
@@ -19,4 +19,30 @@ var twoSum = function(nums, target) {
   return -1;
 };
 ```
-*Map, O(n)*
+
+_Map, O(n)_
+
+## [2. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
+
+```HTML
+var isValid = function(s) {
+  const stack = [],
+    open = {
+      "(" : ")",
+      "[" : "]",
+      "{" : "}"
+    };
+
+  for (let char of s) {
+    if(open[char]) {
+      stack.push(char)
+    } else {
+      if(open[stack.pop()] !== char) return false;
+    }
+  }
+
+  return stack.length === 0;
+};
+```
+
+_Stack, O(n)_
