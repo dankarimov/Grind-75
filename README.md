@@ -63,3 +63,20 @@ var mergeTwoLists = function(l1, l2) {
 ```
 
 _Recursion, O(n)_
+
+## [4. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+```HTML
+var maxProfit = function(prices) {
+  let minPrice = Number.MAX_VALUE,
+      profit = 0;
+
+  for (let price of prices) {
+    if(price < minPrice) minPrice = price;
+    else profit = Math.max(price - minPrice, profit);
+  }
+  return profit;
+};
+```
+
+_Loop, O(n)_
