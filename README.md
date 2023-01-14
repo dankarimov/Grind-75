@@ -80,3 +80,24 @@ var maxProfit = function(prices) {
 ```
 
 _Loop, O(n)_
+
+## [5. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+
+```HTML
+var isPalindrome = function(s) {
+  const str = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  let left = 0;
+  let right = str.length - 1;
+
+  while(left < right) {
+    if(str[left] !== str[right]) return false;
+    left++;
+    right--;
+  }
+
+  return true;
+};
+```
+
+_Loop, O(n)_
