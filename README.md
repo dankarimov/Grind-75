@@ -101,3 +101,20 @@ var isPalindrome = function(s) {
 ```
 
 _Loop, O(n)_
+
+## [5. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+
+```HTML
+var invertTree = function(root) {
+    if(!root) return root;
+
+    [root.left, root.right] = [root.right, root.left];
+
+    invertTree(root.left);
+    invertTree(root.right);
+
+    return root;
+};
+```
+
+_Recursive dfs, O(n)_
