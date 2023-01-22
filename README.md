@@ -102,7 +102,7 @@ var isPalindrome = function(s) {
 
 _Loop, O(n)_
 
-## [5. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+## [6. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
 
 ```HTML
 var invertTree = function(root) {
@@ -118,3 +118,25 @@ var invertTree = function(root) {
 ```
 
 _Recursive dfs, O(n)_
+
+## [7. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
+
+```HTML
+var isAnagram = function(s, t) {
+    if(s.length !== t.length) return false;
+    let map = {};
+
+    for (let c of s) {
+        map[c] = map[c] + 1 || 1;
+    }
+
+    for (let c of t) {
+        if(!map[c] || map[c] < 1) return false;
+        map[c]--;
+    }
+
+    return true;
+};
+```
+
+_Map, O(n)_
