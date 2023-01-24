@@ -6,7 +6,7 @@ Solutions for some problems of [Grind 75](https://www.techinterviewhandbook.org/
 
 ```HTML
 var twoSum = function(nums, target) {
-  let map = {};
+  const map = {};
 
   for (let i = 0; i < nums.length; i++) {
     let n = nums[i],
@@ -27,11 +27,11 @@ _Map, O(n)_
 ```HTML
 var isValid = function(s) {
   const stack = [],
-    open = {
-      "(" : ")",
-      "[" : "]",
-      "{" : "}"
-    };
+        open = {
+          "(" : ")",
+          "[" : "]",
+          "{" : "}"
+        };
 
   for (let char of s) {
     if(open[char]) {
@@ -57,7 +57,9 @@ var mergeTwoLists = function(l1, l2) {
         l1.next = mergeTwoLists(l1.next, l2)
         return l1;
     }
+
     l2.next = mergeTwoLists(l1, l2.next)
+
     return l2;
 };
 ```
@@ -75,6 +77,7 @@ var maxProfit = function(prices) {
     if(price < minPrice) minPrice = price;
     else profit = Math.max(price - minPrice, profit);
   }
+
   return profit;
 };
 ```
@@ -87,8 +90,8 @@ _Loop, O(n)_
 var isPalindrome = function(s) {
   const str = s.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-  let left = 0;
-  let right = str.length - 1;
+  let left = 0,
+      right = str.length - 1;
 
   while(left < right) {
     if(str[left] !== str[right]) return false;
@@ -124,7 +127,8 @@ _Recursive dfs, O(n)_
 ```HTML
 var isAnagram = function(s, t) {
     if(s.length !== t.length) return false;
-    let map = {};
+
+    const map = {};
 
     for (let c of s) {
         map[c] = map[c] + 1 || 1;
@@ -140,3 +144,24 @@ var isAnagram = function(s, t) {
 ```
 
 _Map, O(n)_
+
+## [8. Binary Search](https://leetcode.com/problems/binary-search/description/)
+
+```HTML
+var search = function(nums, target) {
+    let start = 0,
+        end = nums.length - 1,
+        middle = Math.floor((start + end) / 2);
+
+    while(nums[middle] !== target && start <= end) {
+        if(target < nums[middle]) end = middle - 1;
+        else start = middle + 1;
+
+        middle = Math.floor((start + end) / 2);
+    }
+
+    return nums[middle] === target ? middle : -1;
+};
+```
+
+_O(log n)_
