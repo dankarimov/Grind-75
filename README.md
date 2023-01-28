@@ -165,3 +165,30 @@ var search = function(nums, target) {
 ```
 
 _O(log n)_
+
+## [9. Flood Fill](https://leetcode.com/problems/flood-fill/)
+
+```HTML
+var floodFill = function(image, sr, sc, color) {
+    const initialColor = image[sr][sc],
+        rLen = image.length,
+        cLen = image[0].length;
+
+    function helper(sr, sc) {
+        if(sr < 0 || sc < 0 || sr >= rLen || sc >= cLen || image[sr][sc] !== initialColor || image[sr][sc] === color) return;
+
+        image[sr][sc] = color;
+
+        helper(sr + 1, sc);
+        helper(sr - 1, sc);
+        helper(sr, sc + 1);
+        helper(sr, sc - 1);
+    }
+
+    helper(sr, sc);
+
+    return image;
+};
+```
+
+_DFS, O(n\*m)_
