@@ -192,3 +192,51 @@ var floodFill = function(image, sr, sc, color) {
 ```
 
 _DFS, O(n\*m)_
+
+## [9. Flood Fill](https://leetcode.com/problems/flood-fill/)
+
+```HTML
+var floodFill = function(image, sr, sc, color) {
+    const initialColor = image[sr][sc],
+        rLen = image.length,
+        cLen = image[0].length;
+
+    function helper(sr, sc) {
+        if(sr < 0 || sc < 0 || sr >= rLen || sc >= cLen || image[sr][sc] !== initialColor || image[sr][sc] === color) return;
+
+        image[sr][sc] = color;
+
+        helper(sr + 1, sc);
+        helper(sr - 1, sc);
+        helper(sr, sc + 1);
+        helper(sr, sc - 1);
+    }
+
+    helper(sr, sc);
+
+    return image;
+};
+```
+
+_DFS, O(n\*m)_
+
+## [11. Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/)
+
+```HTML
+var isBalanced = function(root) {
+    function dfs(node) {
+        if (!node) return 0;
+
+        let left = 1 + dfs(node.left),
+            right = 1 + dfs(node.right);
+
+        if (Math.abs(left - right) > 1) return Infinity;
+
+        return Math.max(left, right);
+    }
+
+    return dfs(root) === Infinity ? false : true;
+};
+```
+
+_DFS, O(n)_
