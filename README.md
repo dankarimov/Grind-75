@@ -2,6 +2,8 @@
 
 Solutions for some problems of [Grind 75](https://www.techinterviewhandbook.org/grind75)
 
+# Week 1
+
 ## [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
 ```HTML
@@ -262,3 +264,27 @@ var hasCycle = function(head) {
 ```
 
 _Two pointers, O(n)_
+
+# Week 2
+
+## [1. First Bad Version](https://leetcode.com/problems/first-bad-version/)
+
+```HTML
+var solution = function(isBadVersion) {
+    return function(n) {
+        let left = 1,
+            right = n;
+
+        while(left <= right) {
+            let mid = Math.floor((right + left) / 2);
+
+            if(isBadVersion(mid)) right = mid - 1;
+            else left = mid + 1;
+        }
+
+        return left;
+    };
+};
+```
+
+_Binary search, O(log n)_
