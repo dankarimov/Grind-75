@@ -2,7 +2,7 @@
 
 Solutions for some problems of [Grind 75](https://www.techinterviewhandbook.org/grind75)
 
-# Week 1
+## Week 1
 
 ## [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
@@ -265,7 +265,7 @@ var hasCycle = function(head) {
 
 _Two pointers, O(n)_
 
-# Week 2
+## Week 2
 
 ## [1. First Bad Version](https://leetcode.com/problems/first-bad-version/)
 
