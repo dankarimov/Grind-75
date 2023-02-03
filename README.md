@@ -240,3 +240,25 @@ var isBalanced = function(root) {
 ```
 
 _DFS, O(n)_
+
+## [12. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+
+```HTML
+var hasCycle = function(head) {
+  let moveByOne = head,
+      moveByTwo = head;
+
+  while(moveByTwo !== null) {
+    moveByOne = moveByOne?.next;
+
+    if(moveByTwo.next === null) return false;
+    moveByTwo = moveByTwo.next.next;
+
+    if(moveByOne === moveByTwo) return true;
+  }
+
+  return false
+};
+```
+
+_Two pointers, O(n)_
