@@ -288,3 +288,23 @@ var solution = function(isBadVersion) {
 ```
 
 _Binary search, O(log n)_
+
+## [2. Ransom Note](https://leetcode.com/problems/ransom-note/)
+
+```HTML
+var canConstruct = function(ransomNote, magazine) {
+    if(magazine.length < ransomNote.length) return false;
+    const map = {};
+
+    for (let c of magazine) map[c] = map[c] + 1 || 1;
+
+    for (let c of ransomNote) {
+        if(map[c] > 0) map[c]--;
+        else return false;
+    }
+
+    return true;
+};
+```
+
+_Map, O(n)_
