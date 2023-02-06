@@ -308,3 +308,18 @@ var canConstruct = function(ransomNote, magazine) {
 ```
 
 _Map, O(n)_
+
+## [3. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+
+```HTML
+var climbStairs = function(n, memo = []) {
+    if (n <= 2) return n;
+
+    if (memo[n]) return memo[n];
+
+    memo[n] = climbStairs(n-1, memo) + climbStairs(n-2, memo);
+    return memo[n];
+};
+```
+
+_DP, O(n)_
