@@ -323,3 +323,21 @@ var climbStairs = function(n, memo = []) {
 ```
 
 _DP, O(n)_
+
+## [4. Longest Palindrome](https://leetcode.com/problems/longest-palindrome/)
+
+```HTML
+var longestPalindrome = function(s) {
+    const map = {};
+    let max = 0;
+
+    for (let c of s) {
+        map[c] = map[c] + 1 || 1;
+        if(map[c] % 2 === 0) max += 2;
+    }
+
+    return s.length > max ? max + 1 : max;
+};
+```
+
+_Map, O(n)_
