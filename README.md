@@ -341,3 +341,25 @@ var longestPalindrome = function(s) {
 ```
 
 _Map, O(n)_
+
+## [5. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+
+```HTML
+var reverseList = function(head) {
+    let prev = null,
+        current = head,
+        next;
+
+    while(current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    head = prev;
+    return head;
+};
+```
+
+_Loop, O(n)_
