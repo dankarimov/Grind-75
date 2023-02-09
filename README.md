@@ -363,3 +363,20 @@ var reverseList = function(head) {
 ```
 
 _Loop, O(n)_
+
+## [6. Majority Element](https://leetcode.com/problems/majority-element/)
+
+```HTML
+var majorityElement = function(nums) {
+    const map = {};
+    let majorityCount = nums.length / 2;
+
+    for (let num of nums) map[num] = map[num] + 1 || 1;
+
+    for(let count in map) {
+      if (map[count] > majorityCount) return count;
+    }
+};
+```
+
+_Map, O(n)_
