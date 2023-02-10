@@ -380,3 +380,34 @@ var majorityElement = function(nums) {
 ```
 
 _Map, O(n)_
+
+## [7. Add Binary](https://leetcode.com/problems/add-binary/)
+
+```HTML
+let addBinary = (a, b) => {
+  let carry = 0,
+      res = '',
+      lenA = a.length - 1,
+      lenB = b.length - 1;
+
+  while (lenA >= 0 || lenB >= 0 || carry > 0) {
+    let n1 = +a[lenA],
+        n2 = +b[lenB],
+        sum = (n1 || 0) + (n2 || 0) + carry;
+
+    if (sum > 1) {
+      sum = sum % 2;
+      carry = 1;
+    } else carry = 0;
+
+    res = sum + res;
+
+    lenA--;
+    lenB--;
+  }
+
+  return res;
+};
+```
+
+_Loop, O(n + m)_
