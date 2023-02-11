@@ -411,3 +411,28 @@ let addBinary = (a, b) => {
 ```
 
 _Loop, O(n + m)_
+
+## [8. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
+
+```HTML
+var diameterOfBinaryTree = function(root) {
+    let diameter = 0;
+
+    function helper(node) {
+        if(!node) return 0;
+
+        const left = helper(node.left);
+        const right = helper(node.right);
+
+        diameter = Math.max(diameter, left + right);
+
+        return Math.max(left, right) + 1;
+    }
+
+    helper(root);
+
+    return diameter;
+};
+```
+
+_Recursion, O(n)_
