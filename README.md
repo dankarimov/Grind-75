@@ -436,3 +436,20 @@ var diameterOfBinaryTree = function(root) {
 ```
 
 _Recursion, O(n)_
+
+## [9. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+
+```HTML
+var middleNode = function(head) {
+    let moveByOne = moveByTwo = head;
+
+    while(moveByTwo && moveByTwo.next) {
+        moveByOne = moveByOne.next;
+        moveByTwo = moveByTwo.next.next;
+    }
+
+    return moveByOne;
+};
+```
+
+_Loop, O(n)_
