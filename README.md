@@ -453,3 +453,15 @@ var middleNode = function(head) {
 ```
 
 _Loop, O(n)_
+
+## [10. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+
+```HTML
+var maxDepth = function(root) {
+    return root === null
+        ? 0
+        : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+};
+```
+
+_Recursion, O(n)_
