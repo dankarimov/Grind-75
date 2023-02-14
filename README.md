@@ -465,3 +465,13 @@ var maxDepth = function(root) {
 ```
 
 _Recursion, O(n)_
+
+## [11. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+
+```HTML
+var containsDuplicate = function(nums) {
+    return new Set(nums).size < nums.length;
+};
+```
+
+_Set, O(n)_
