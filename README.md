@@ -475,3 +475,26 @@ var containsDuplicate = function(nums) {
 ```
 
 _Set, O(n)_
+
+_Recursion, O(n)_
+
+## [12. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+```HTML
+var maxSubArray = function(nums) {
+    let max = nums[0],
+        cur = 0;
+
+    for (let n of nums) {
+        if(cur < 0) cur = 0;
+        
+        cur += n;
+
+        max = Math.max(cur, max);
+    }
+
+    return max;
+};
+```
+
+_Loop, O(n)_
