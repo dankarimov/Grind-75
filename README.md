@@ -507,22 +507,22 @@ _Loop, O(n)_
 var insert = function(intervals, newInterval) {
     const res = [];
 
-	for (let interval of intervals) {
-		const [start, end] = interval,
+    for (let interval of intervals) {
+        const [start, end] = interval,
             [newStart, newEnd] = newInterval,
             min = Math.min(newStart, start),
             max = Math.max(newEnd, end);
 
-		if (newEnd < start) {
-			res.push(newInterval);
-			newInterval = interval;
-		} else if (end < newStart) res.push(interval);
-		else newInterval = [min, max];
-	}
+    if (newEnd < start) {
+        res.push(newInterval);
+        newInterval = interval;
+    } else if (end < newStart) res.push(interval);
+        else newInterval = [min, max];
+    }
 
-	res.push(newInterval);
+    res.push(newInterval);
 
-	return res;
+    return res;
 };
 ```
 
