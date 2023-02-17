@@ -487,13 +487,42 @@ var maxSubArray = function(nums) {
 
     for (let n of nums) {
         if(cur < 0) cur = 0;
-        
+
         cur += n;
 
         max = Math.max(cur, max);
     }
 
     return max;
+};
+```
+
+_Loop, O(n)_
+
+## Week 3
+
+## [1. Insert Interval](https://leetcode.com/problems/insert-interval/)
+
+```HTML
+var insert = function(intervals, newInterval) {
+    const res = [];
+
+	for (let interval of intervals) {
+		const [start, end] = interval,
+            [newStart, newEnd] = newInterval,
+            min = Math.min(newStart, start),
+            max = Math.max(newEnd, end);
+
+		if (newEnd < start) {
+			res.push(newInterval);
+			newInterval = interval;
+		} else if (end < newStart) res.push(interval);
+		else newInterval = [min, max];
+	}
+
+	res.push(newInterval);
+
+	return res;
 };
 ```
 
