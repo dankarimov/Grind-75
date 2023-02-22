@@ -528,6 +528,33 @@ var insert = function(intervals, newInterval) {
 
 _Loop, O(n)_
 
+## [4. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
+```HTML
+var lengthOfLongestSubstring = function(s) {
+    const set = new Set();
+    let left = right = max = 0;
+
+    while(right < s.length) {
+        const rChar = s[right];
+
+        if(!set.has(rChar)) {
+            set.add(rChar);
+            max = Math.max(max, set.size);
+            right++;
+        } else {
+            const lChar = s[left];
+            set.delete(lChar);
+            left++;
+        }
+    }
+
+    return max;
+};
+```
+
+_2 pointers, O(n)_
+
 ## [5. 3Sum](https://leetcode.com/problems/3sum/)
 
 ```HTML
