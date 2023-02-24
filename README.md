@@ -588,7 +588,7 @@ var threeSum = function(nums) {
 
 _2 pointers, O(n^2)_
 
-## Week 3
+## Week 4
 
 ## [3. Coin Change](https://leetcode.com/problems/coin-change/)
 
