@@ -587,3 +587,28 @@ var threeSum = function(nums) {
 ```
 
 _2 pointers, O(n^2)_
+
+## Week 3
+
+## [3. Coin Change](https://leetcode.com/problems/coin-change/)
+
+```HTML
+var coinChange = function(coins, amount) {
+  let dp = Array(amount + 1).fill(Infinity);
+  dp[0] = 0;
+
+  for (let i = 1; i <= amount; i++) {
+    for (let coin of coins) {
+      const pos = i - coin;
+
+      if (pos >= 0) {
+        dp[i] = Math.min(dp[i], dp[pos] + 1);
+      }
+    }
+  }
+
+  return dp[amount] != Infinity ? dp[amount] : -1;
+};
+```
+
+_DP, O(n \* amount)_
