@@ -588,6 +588,30 @@ var threeSum = function(nums) {
 
 _2 pointers, O(n^2)_
 
+## [8. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+
+```HTML
+var evalRPN = function(tokens) {
+    const op = {
+        "+": (b, a) => a + b,
+        "-": (b, a) => a - b,
+        "*": (b, a) => a * b,
+        "/": (b, a) => Math.trunc(a / b),
+    }, stack = [];
+
+  for (let t of tokens) {
+    const exp = op[t];
+
+    if (exp) stack.push(exp(+stack.pop(), +stack.pop()));
+    else stack.push(t);
+  }
+
+  return stack[0];
+};
+```
+
+_Loop, O(n)_
+
 ## Week 4
 
 ## [3. Coin Change](https://leetcode.com/problems/coin-change/)
