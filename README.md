@@ -588,6 +588,31 @@ var threeSum = function(nums) {
 
 _2 pointers, O(n^2)_
 
+## [6. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+
+```HTML
+var levelOrder = function(root) {
+    const res = [],
+          level = 0;
+
+     function traverse(node, level) {
+        if (node === null) return;
+        if (level === res.length) res[level] = [];
+
+        res[level].push(node.val);
+
+        traverse(node.left, level + 1);
+        traverse(node.right, level + 1);
+     }
+
+    traverse(root, level);
+
+    return res;
+};
+```
+
+_2 pointers, O(n^2)_
+
 ## [8. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
 
 ```HTML
