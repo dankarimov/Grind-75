@@ -611,7 +611,7 @@ var levelOrder = function(root) {
 };
 ```
 
-_2 pointers, O(n^2)_
+_Recursion, O(n)_
 
 ## [8. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
 
