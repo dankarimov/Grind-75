@@ -688,4 +688,4 @@ var productExceptSelf = function(nums) {
 };
 ```
 
-_DP, O(n \* amount)_
+_DP, O(n)_
