@@ -661,3 +661,31 @@ var coinChange = function(coins, amount) {
 ```
 
 _DP, O(n \* amount)_
+
+## [4. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+
+```HTML
+var productExceptSelf = function(nums) {
+  let len = nums.length,
+    leftArr = [],
+    rightArr = [],
+    left = 1,
+    right = 1;
+
+  for (let i = 0; i < len; i++) {
+    leftArr[i] = left;
+    left *=  nums[i];
+  }
+
+  for (let i = len - 1; i >= 0; i--) {
+    rightArr[i] = right;
+    right *= nums[i];
+
+    leftArr[i] *= rightArr[i];
+  }
+
+  return leftArr;
+};
+```
+
+_DP, O(n \* amount)_
