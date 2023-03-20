@@ -689,3 +689,22 @@ var productExceptSelf = function(nums) {
 ```
 
 _Loop, O(n)_
+
+## [6. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
+
+```HTML
+var isValidBST = function(root) {
+  function traverse(node, min = null, max = null) {
+    if(!node) return true;
+
+    if (min && node.val <= min.val) return false;
+    if (max && node.val >= max.val) return false;
+
+     return traverse(node.left, min, node) && traverse(node.right, node, max);
+  }  
+
+  return traverse(root)
+};
+```
+
+_Recursion, O(n)_
