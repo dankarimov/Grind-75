@@ -701,10 +701,39 @@ var isValidBST = function(root) {
     if (max && node.val >= max.val) return false;
 
      return traverse(node.left, min, node) && traverse(node.right, node, max);
-  }  
+  }
 
   return traverse(root)
 };
 ```
 
 _Recursion, O(n)_
+
+## Week 5
+
+## [1. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+```HTML
+var search = function(nums, target) {
+  let left = 0,
+      right = nums.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    if (nums[mid] === target) return mid;
+
+    if (nums[left] <= nums[mid]) {
+      if (nums[left] <= target && target <= nums[mid]) right = mid - 1;
+      else left = mid + 1;
+    } else {
+      if (nums[right] >= target && nums[mid] <= target) left = mid + 1;
+      else right = mid - 1;
+    }
+  }
+
+  return -1;
+};
+```
+
+_Binary Search, O(log n)_
