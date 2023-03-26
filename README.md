@@ -737,3 +737,31 @@ var search = function(nums, target) {
 ```
 
 _Binary Search, O(log n)_
+
+## [2. Combination Sum](https://leetcode.com/problems/combination-sum/)
+
+```HTML
+var combinationSum = function(candidates, target) {
+    let res = [];
+
+    function helper(sum, idx, arr) {
+        if(sum === target) {
+            res.push(arr);
+        }
+
+        if(sum > target) return;
+
+        for (let i = idx; i < candidates.length; i++) {
+            let num = candidates[i];
+
+            helper(sum + num, i, [...arr, num]);
+        }
+    }
+
+    helper(0, 0, []);
+
+    return res;
+};
+```
+
+_Backtracking, O(2^k)_
