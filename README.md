@@ -765,3 +765,33 @@ var combinationSum = function(candidates, target) {
 ```
 
 _Backtracking, O(2^k)_
+
+## [3. Permutations](https://leetcode.com/problems/permutations/)
+
+```HTML
+var permute = function(nums) {
+    const res = [];
+
+    function helper(cur, rest) {
+        if(rest.length === 0) {
+            res.push(cur);
+            return;
+        }
+
+        for (let i = 0; i < rest.length; i++) {
+            const num = rest[i],
+                newCur = [...cur, num],
+                newRest = [...rest];
+                newRest.splice(i, 1);
+
+            helper(newCur, newRest);
+        }
+    }
+
+    helper([], nums);
+
+    return res;
+};
+```
+
+_Backtracking, O(n \* n!)_
