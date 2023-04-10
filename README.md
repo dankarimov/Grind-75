@@ -795,3 +795,27 @@ var permute = function(nums) {
 ```
 
 _Backtracking, O(n \* n!)_
+
+## [4. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+```HTML
+var merge = function(intervals) {
+  if(intervals.length === 0) return [];
+
+  intervals.sort((a,b) => a[0] - b[0]);
+  let res = [intervals[0]];
+
+  for (let i = 1; i < intervals.length; i++) {
+    let [start, end] = intervals[i];
+
+    if(start <= res[res.length - 1][1]) {
+      let [startPrev, endPrev] = res.pop();
+      res.push([startPrev, Math.max(end, endPrev)]);
+    } else res.push([start,end]);
+  }
+
+  return res;
+};
+```
+
+_O(n log n)_
