@@ -819,3 +819,30 @@ var merge = function(intervals) {
 ```
 
 _O(n log n)_
+
+## [8. Sort Colors](https://leetcode.com/problems/sort-colors/)
+
+```HTML
+var sortColors = function(nums) {
+  const len = nums.length;
+  let idx = 0;
+
+  for (let i = 0; i < len; i++) {
+    if(nums[i] === 0) {
+      [nums[i], nums[idx]] = [nums[idx], nums[i]];
+      idx++;
+    }
+  }
+
+  for (let i = idx; i < len; i++) {
+    if(nums[i] === 1) {
+      [nums[i], nums[idx]] = [nums[idx], nums[i]];
+      idx++;
+    }
+  }
+
+  return nums;
+};
+```
+
+_Loop, O(n)_
