@@ -853,24 +853,24 @@ _Loop, O(n)_
 
 ```HTML
 var wordBreak = function(s, wordDict) {
-    const len = s.length,
-    dp = Array(len + 1).fill(false);
+  const len = s.length,
+  dp = Array(len + 1).fill(false);
 
-    dp[0] = true;
+  dp[0] = true;
 
-    for (let i = 0; i < len; i++) {
-        if (dp[i]) {
-			for (let word of wordDict) {
-                const wLen = word.length;
+  for (let i = 0; i < len; i++) {
+    if (dp[i]) {
+      for (let word of wordDict) {
+       const wLen = word.length;
 
-				if (s.slice(i, i + wLen) === word) {
-					dp[i + wLen] = true;
-				}
-			}
-		}
+        if (s.slice(i, i + wLen) === word) {
+          dp[i + wLen] = true;
+        }
+      }
     }
+  }
 
-    return dp[len];
+  return dp[len];
 };
 ```
 
