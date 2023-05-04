@@ -846,3 +846,32 @@ var sortColors = function(nums) {
 ```
 
 _Loop, O(n)_
+
+## Week 6
+
+## [1. Word Break](https://leetcode.com/problems/word-break/)
+
+```HTML
+var wordBreak = function(s, wordDict) {
+    const len = s.length,
+    dp = Array(len + 1).fill(false);
+
+    dp[0] = true;
+
+    for (let i = 0; i < len; i++) {
+        if (dp[i]) {
+			for (let word of wordDict) {
+                const wLen = word.length;
+
+				if (s.slice(i, i + wLen) === word) {
+					dp[i + wLen] = true;
+				}
+			}
+		}
+    }
+
+    return dp[len];
+};
+```
+
+_DP, O(n^2)_
