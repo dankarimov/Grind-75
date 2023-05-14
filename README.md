@@ -12,9 +12,9 @@ var twoSum = function(nums, target) {
 
   for (let i = 0; i < nums.length; i++) {
     let n = nums[i],
-    part = target - n;
+        part = target - n;
 
-    if(map[part] >= 0) return [map[part], i];
+    if (map[part] >= 0) return [map[part], i];
     else map[n] = i;
   }
 
@@ -36,10 +36,10 @@ var isValid = function(s) {
         };
 
   for (let char of s) {
-    if(open[char]) {
+    if (open[char]) {
       stack.push(char)
     } else {
-      if(open[stack.pop()] !== char) return false;
+      if (open[stack.pop()] !== char) return false;
     }
   }
 
@@ -53,16 +53,16 @@ _Stack, O(n)_
 
 ```HTML
 var mergeTwoLists = function(l1, l2) {
-    if(!l1 || !l2) return l1 || l2;
+  if (!l1 || !l2) return l1 || l2;
 
-    if(l1.val < l2.val) {
-        l1.next = mergeTwoLists(l1.next, l2)
-        return l1;
-    }
+  if (l1.val < l2.val) {
+    l1.next = mergeTwoLists(l1.next, l2)
+    return l1;
+  }
 
-    l2.next = mergeTwoLists(l1, l2.next)
+  l2.next = mergeTwoLists(l1, l2.next)
 
-    return l2;
+  return l2;
 };
 ```
 
@@ -76,7 +76,7 @@ var maxProfit = function(prices) {
       profit = 0;
 
   for (let price of prices) {
-    if(price < minPrice) minPrice = price;
+    if (price < minPrice) minPrice = price;
     else profit = Math.max(price - minPrice, profit);
   }
 
@@ -95,8 +95,8 @@ var isPalindrome = function(s) {
   let left = 0,
       right = str.length - 1;
 
-  while(left < right) {
-    if(str[left] !== str[right]) return false;
+  while (left < right) {
+    if (str[left] !== str[right]) return false;
     left++;
     right--;
   }
@@ -111,14 +111,14 @@ _Loop, O(n)_
 
 ```HTML
 var invertTree = function(root) {
-    if(!root) return root;
+  if (!root) return root;
 
-    [root.left, root.right] = [root.right, root.left];
+  [root.left, root.right] = [root.right, root.left];
 
-    invertTree(root.left);
-    invertTree(root.right);
+  invertTree(root.left);
+  invertTree(root.right);
 
-    return root;
+  return root;
 };
 ```
 
@@ -128,20 +128,20 @@ _Recursive dfs, O(n)_
 
 ```HTML
 var isAnagram = function(s, t) {
-    if(s.length !== t.length) return false;
+  if (s.length !== t.length) return false;
 
-    const map = {};
+  const map = {};
 
-    for (let c of s) {
-        map[c] = map[c] + 1 || 1;
-    }
+  for (let c of s) {
+    map[c] = map[c] + 1 || 1;
+  }
 
-    for (let c of t) {
-        if(!map[c] || map[c] < 1) return false;
-        map[c]--;
-    }
+  for (let c of t) {
+    if(!map[c] || map[c] < 1) return false;
+    map[c]--;
+  }
 
-    return true;
+  return true;
 };
 ```
 
@@ -151,18 +151,18 @@ _Map, O(n)_
 
 ```HTML
 var search = function(nums, target) {
-    let start = 0,
-        end = nums.length - 1,
-        middle = Math.floor((start + end) / 2);
+  let start = 0,
+    end = nums.length - 1,
+    middle = Math.floor((start + end) / 2);
 
-    while(nums[middle] !== target && start <= end) {
-        if(target < nums[middle]) end = middle - 1;
-        else start = middle + 1;
+  while (nums[middle] !== target && start <= end) {
+    if (target < nums[middle]) end = middle - 1;
+    else start = middle + 1;
 
-        middle = Math.floor((start + end) / 2);
-    }
+    middle = Math.floor((start + end) / 2);
+  }
 
-    return nums[middle] === target ? middle : -1;
+  return nums[middle] === target ? middle : -1;
 };
 ```
 
@@ -172,24 +172,24 @@ _O(log n)_
 
 ```HTML
 var floodFill = function(image, sr, sc, color) {
-    const initialColor = image[sr][sc],
+  const initialColor = image[sr][sc],
         rLen = image.length,
         cLen = image[0].length;
 
-    function helper(sr, sc) {
-        if(sr < 0 || sc < 0 || sr >= rLen || sc >= cLen || image[sr][sc] !== initialColor || image[sr][sc] === color) return;
+  function helper(sr, sc) {
+    if (sr < 0 || sc < 0 || sr >= rLen || sc >= cLen || image[sr][sc] !== initialColor || image[sr][sc] === color) return;
 
-        image[sr][sc] = color;
+    image[sr][sc] = color;
 
-        helper(sr + 1, sc);
-        helper(sr - 1, sc);
-        helper(sr, sc + 1);
-        helper(sr, sc - 1);
-    }
+    helper(sr + 1, sc);
+    helper(sr - 1, sc);
+    helper(sr, sc + 1);
+    helper(sr, sc - 1);
+  }
 
-    helper(sr, sc);
+  helper(sr, sc);
 
-    return image;
+  return image;
 };
 ```
 
@@ -200,23 +200,23 @@ _DFS, O(n\*m)_
 ```HTML
 var floodFill = function(image, sr, sc, color) {
     const initialColor = image[sr][sc],
-        rLen = image.length,
-        cLen = image[0].length;
+      rLen = image.length,
+      cLen = image[0].length;
 
-    function helper(sr, sc) {
-        if(sr < 0 || sc < 0 || sr >= rLen || sc >= cLen || image[sr][sc] !== initialColor || image[sr][sc] === color) return;
+  function helper(sr, sc) {
+    if (sr < 0 || sc < 0 || sr >= rLen || sc >= cLen || image[sr][sc] !== initialColor || image[sr][sc] === color) return;
 
-        image[sr][sc] = color;
+    image[sr][sc] = color;
 
-        helper(sr + 1, sc);
-        helper(sr - 1, sc);
-        helper(sr, sc + 1);
-        helper(sr, sc - 1);
-    }
+    helper(sr + 1, sc);
+    helper(sr - 1, sc);
+    helper(sr, sc + 1);
+    helper(sr, sc - 1);
+  }
 
-    helper(sr, sc);
+  helper(sr, sc);
 
-    return image;
+  return image;
 };
 ```
 
@@ -226,16 +226,16 @@ _DFS, O(n\*m)_
 
 ```HTML
 var isBalanced = function(root) {
-    function dfs(node) {
-        if (!node) return 0;
+  function dfs(node) {
+    if (!node) return 0;
 
-        let left = 1 + dfs(node.left),
-            right = 1 + dfs(node.right);
+    let left = 1 + dfs(node.left),
+      right = 1 + dfs(node.right);
 
-        if (Math.abs(left - right) > 1) return Infinity;
+    if (Math.abs(left - right) > 1) return Infinity;
 
-        return Math.max(left, right);
-    }
+    return Math.max(left, right);
+  }
 
     return dfs(root) === Infinity ? false : true;
 };
@@ -250,10 +250,10 @@ var hasCycle = function(head) {
   let moveByOne = head,
       moveByTwo = head;
 
-  while(moveByTwo !== null) {
+  while( moveByTwo !== null) {
     moveByOne = moveByOne?.next;
 
-    if(moveByTwo.next === null) return false;
+    if (moveByTwo.next === null) return false;
     moveByTwo = moveByTwo.next.next;
 
     if(moveByOne === moveByTwo) return true;
@@ -271,19 +271,19 @@ _Two pointers, O(n)_
 
 ```HTML
 var solution = function(isBadVersion) {
-    return function(n) {
-        let left = 1,
-            right = n;
+  return function(n) {
+    let left = 1,
+        right = n;
 
-        while(left <= right) {
-            let mid = Math.floor((right + left) / 2);
+    while (left <= right) {
+        let mid = Math.floor((right + left) / 2);
 
-            if(isBadVersion(mid)) right = mid - 1;
-            else left = mid + 1;
-        }
+        if (isBadVersion(mid)) right = mid - 1;
+        else left = mid + 1;
+    }
 
-        return left;
-    };
+    return left;
+  };
 };
 ```
 
@@ -293,7 +293,7 @@ _Binary search, O(log n)_
 
 ```HTML
 var canConstruct = function(ransomNote, magazine) {
-    if(magazine.length < ransomNote.length) return false;
+    if (magazine.length < ransomNote.length) return false;
     const map = {};
 
     for (let c of magazine) map[c] = map[c] + 1 || 1;
@@ -416,22 +416,22 @@ _Loop, O(n + m)_
 
 ```HTML
 var diameterOfBinaryTree = function(root) {
-    let diameter = 0;
+  let diameter = 0;
 
-    function helper(node) {
-        if(!node) return 0;
+  function helper(node) {
+    if (!node) return 0;
 
-        const left = helper(node.left);
-        const right = helper(node.right);
+    const left = helper(node.left);
+    const right = helper(node.right);
 
-        diameter = Math.max(diameter, left + right);
+    diameter = Math.max(diameter, left + right);
 
-        return Math.max(left, right) + 1;
-    }
+    return Math.max(left, right) + 1;
+  }
 
-    helper(root);
+  helper(root);
 
-    return diameter;
+  return diameter;
 };
 ```
 
@@ -441,14 +441,14 @@ _Recursion, O(n)_
 
 ```HTML
 var middleNode = function(head) {
-    let moveByOne = moveByTwo = head;
+  let moveByOne = moveByTwo = head;
 
-    while(moveByTwo && moveByTwo.next) {
-        moveByOne = moveByOne.next;
-        moveByTwo = moveByTwo.next.next;
-    }
+  while (moveByTwo && moveByTwo.next) {
+    moveByOne = moveByOne.next;
+    moveByTwo = moveByTwo.next.next;
+  }
 
-    return moveByOne;
+  return moveByOne;
 };
 ```
 
@@ -458,9 +458,9 @@ _Loop, O(n)_
 
 ```HTML
 var maxDepth = function(root) {
-    return root === null
-        ? 0
-        : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+  return root === null
+    ? 0
+    : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
 ```
 
@@ -470,7 +470,7 @@ _Recursion, O(n)_
 
 ```HTML
 var containsDuplicate = function(nums) {
-    return new Set(nums).size < nums.length;
+  return new Set(nums).size < nums.length;
 };
 ```
 
@@ -482,18 +482,18 @@ _Recursion, O(n)_
 
 ```HTML
 var maxSubArray = function(nums) {
-    let max = nums[0],
-        cur = 0;
+  let max = nums[0],
+      cur = 0;
 
-    for (let n of nums) {
-        if(cur < 0) cur = 0;
+  for (let n of nums) {
+    if(cur < 0) cur = 0;
 
-        cur += n;
+    cur += n;
 
-        max = Math.max(cur, max);
-    }
+    max = Math.max(cur, max);
+  }
 
-    return max;
+  return max;
 };
 ```
 
@@ -505,24 +505,24 @@ _Loop, O(n)_
 
 ```HTML
 var insert = function(intervals, newInterval) {
-    const res = [];
+  const res = [];
 
-    for (let interval of intervals) {
-        const [start, end] = interval,
-            [newStart, newEnd] = newInterval,
-            min = Math.min(newStart, start),
-            max = Math.max(newEnd, end);
+  for (let interval of intervals) {
+    const [start, end] = interval,
+          [newStart, newEnd] = newInterval,
+          min = Math.min(newStart, start),
+          max = Math.max(newEnd, end);
 
-    if (newEnd < start) {
-        res.push(newInterval);
-        newInterval = interval;
-    } else if (end < newStart) res.push(interval);
-        else newInterval = [min, max];
-    }
-
+  if (newEnd < start) {
     res.push(newInterval);
+    newInterval = interval;
+  } else if (end < newStart) res.push(interval);
+    else newInterval = [min, max];
+  }
 
-    return res;
+  res.push(newInterval);
+
+  return res;
 };
 ```
 
@@ -532,24 +532,24 @@ _Loop, O(n)_
 
 ```HTML
 var lengthOfLongestSubstring = function(s) {
-    const set = new Set();
-    let left = right = max = 0;
+  const set = new Set();
+  let left = right = max = 0;
 
-    while(right < s.length) {
-        const rChar = s[right];
+  while (right < s.length) {
+    const rChar = s[right];
 
-        if(!set.has(rChar)) {
-            set.add(rChar);
-            max = Math.max(max, set.size);
-            right++;
-        } else {
-            const lChar = s[left];
-            set.delete(lChar);
-            left++;
-        }
+    if (!set.has(rChar)) {
+      set.add(rChar);
+      max = Math.max(max, set.size);
+      right++;
+    } else {
+      const lChar = s[left];
+      set.delete(lChar);
+      left++;
     }
+  }
 
-    return max;
+  return max;
 };
 ```
 
@@ -559,30 +559,30 @@ _2 pointers, O(n)_
 
 ```HTML
 var threeSum = function(nums) {
-    nums.sort((a,b) => a - b);
-    let res = [];
+  nums.sort((a,b) => a - b);
+  let res = [];
 
-    for (let i = 0; i < nums.length - 2; i++) {
-        if(i > 0 && nums[i] === nums[i - 1]) continue;
+  for (let i = 0; i < nums.length - 2; i++) {
+    if(i > 0 && nums[i] === nums[i - 1]) continue;
 
-        let left = i + 1,
-            right = nums.length - 1;
+    let left = i + 1,
+      right = nums.length - 1;
 
-        while (left < right) {
-            let sum = nums[i] + nums[left] + nums[right];
+    while (left < right) {
+      let sum = nums[i] + nums[left] + nums[right];
 
-            if(sum === 0) {
-                res.push([nums[i], nums[left], nums[right]]);
-                while(nums[left] === nums[left + 1]) left++;
-                while(nums[right] === nums[right - 1]) right--;
-            }
+      if (sum === 0) {
+        res.push([nums[i], nums[left], nums[right]]);
+        while(nums[left] === nums[left + 1]) left++;
+        while(nums[right] === nums[right - 1]) right--;
+      }
 
-            if(sum < 0) left++;
-            else right--;
-        }
+      if (sum < 0) left++;
+      else right--;
     }
+  }
 
-    return res;
+  return res;
 };
 ```
 
@@ -592,22 +592,22 @@ _2 pointers, O(n^2)_
 
 ```HTML
 var levelOrder = function(root) {
-    const res = [],
-          level = 0;
+  const res = [],
+        level = 0;
 
-     function traverse(node, level) {
-        if (node === null) return;
-        if (level === res.length) res[level] = [];
+  function traverse(node, level) {
+    if (node === null) return;
+    if (level === res.length) res[level] = [];
 
-        res[level].push(node.val);
+    res[level].push(node.val);
 
-        traverse(node.left, level + 1);
-        traverse(node.right, level + 1);
-     }
+    traverse(node.left, level + 1);
+    traverse(node.right, level + 1);
+  }
 
-    traverse(root, level);
+  traverse(root, level);
 
-    return res;
+  return res;
 };
 ```
 
@@ -617,12 +617,12 @@ _Recursion, O(n)_
 
 ```HTML
 var evalRPN = function(tokens) {
-    const op = {
-        "+": (b, a) => a + b,
-        "-": (b, a) => a - b,
-        "*": (b, a) => a * b,
-        "/": (b, a) => Math.trunc(a / b),
-    }, stack = [];
+  const op = {
+    "+": (b, a) => a + b,
+    "-": (b, a) => a - b,
+    "*": (b, a) => a * b,
+    "/": (b, a) => Math.trunc(a / b),
+  }, stack = [];
 
   for (let t of tokens) {
     const exp = op[t];
@@ -667,10 +667,10 @@ _DP, O(n \* amount)_
 ```HTML
 var productExceptSelf = function(nums) {
   let len = nums.length,
-    leftArr = [],
-    rightArr = [],
-    left = 1,
-    right = 1;
+      leftArr = [],
+      rightArr = [],
+      left = 1,
+      right = 1;
 
   for (let i = 0; i < len; i++) {
     leftArr[i] = left;
@@ -695,7 +695,7 @@ _Loop, O(n)_
 ```HTML
 var isValidBST = function(root) {
   function traverse(node, min = null, max = null) {
-    if(!node) return true;
+    if (!node) return true;
 
     if (min && node.val <= min.val) return false;
     if (max && node.val >= max.val) return false;
@@ -742,25 +742,25 @@ _Binary Search, O(log n)_
 
 ```HTML
 var combinationSum = function(candidates, target) {
-    let res = [];
+  let res = [];
 
-    function helper(sum, idx, arr) {
-        if(sum === target) {
-            res.push(arr);
-        }
-
-        if(sum > target) return;
-
-        for (let i = idx; i < candidates.length; i++) {
-            let num = candidates[i];
-
-            helper(sum + num, i, [...arr, num]);
-        }
+  function helper(sum, idx, arr) {
+    if (sum === target) {
+      res.push(arr);
     }
 
-    helper(0, 0, []);
+    if (sum > target) return;
 
-    return res;
+    for (let i = idx; i < candidates.length; i++) {
+      let num = candidates[i];
+
+      helper(sum + num, i, [...arr, num]);
+    }
+  }
+
+  helper(0, 0, []);
+
+  return res;
 };
 ```
 
@@ -770,27 +770,27 @@ _Backtracking, O(2^k)_
 
 ```HTML
 var permute = function(nums) {
-    const res = [];
+  const res = [];
 
-    function helper(cur, rest) {
-        if(rest.length === 0) {
-            res.push(cur);
-            return;
-        }
-
-        for (let i = 0; i < rest.length; i++) {
-            const num = rest[i],
-                newCur = [...cur, num],
-                newRest = [...rest];
-                newRest.splice(i, 1);
-
-            helper(newCur, newRest);
-        }
+  function helper(cur, rest) {
+    if (rest.length === 0) {
+      res.push(cur);
+      return;
     }
 
-    helper([], nums);
+    for (let i = 0; i < rest.length; i++) {
+      const num = rest[i],
+        newCur = [...cur, num],
+        newRest = [...rest];
+        newRest.splice(i, 1);
 
-    return res;
+      helper(newCur, newRest);
+    }
+  }
+
+  helper([], nums);
+
+  return res;
 };
 ```
 
@@ -800,7 +800,7 @@ _Backtracking, O(n \* n!)_
 
 ```HTML
 var merge = function(intervals) {
-  if(intervals.length === 0) return [];
+  if (intervals.length === 0) return [];
 
   intervals.sort((a,b) => a[0] - b[0]);
   let res = [intervals[0]];
@@ -808,7 +808,7 @@ var merge = function(intervals) {
   for (let i = 1; i < intervals.length; i++) {
     let [start, end] = intervals[i];
 
-    if(start <= res[res.length - 1][1]) {
+    if (start <= res[res.length - 1][1]) {
       let [startPrev, endPrev] = res.pop();
       res.push([startPrev, Math.max(end, endPrev)]);
     } else res.push([start,end]);
@@ -828,14 +828,14 @@ var sortColors = function(nums) {
   let idx = 0;
 
   for (let i = 0; i < len; i++) {
-    if(nums[i] === 0) {
+    if (nums[i] === 0) {
       [nums[i], nums[idx]] = [nums[idx], nums[i]];
       idx++;
     }
   }
 
   for (let i = idx; i < len; i++) {
-    if(nums[i] === 1) {
+    if (nums[i] === 1) {
       [nums[i], nums[idx]] = [nums[idx], nums[i]];
       idx++;
     }
@@ -880,31 +880,31 @@ _DP, O(n^2)_
 
 ```HTML
 var spiralOrder = function(matrix) {
-    let res = [],
-        left = 0,
-        right = matrix[0].length - 1,
-        top = 0,
-        bottom = matrix.length - 1;
+  let res = [],
+      left = 0,
+      right = matrix[0].length - 1,
+      top = 0,
+      bottom = matrix.length - 1;
 
-    while(left <= right && top <= bottom) {
-        for (let i = left; i <= right; i++) res.push(matrix[top][i]);
-        top++;
+  while (left <= right && top <= bottom) {
+    for (let i = left; i <= right; i++) res.push(matrix[top][i]);
+    top++;
 
-        for (let i = top; i <= bottom; i++) res.push(matrix[i][right]);
-        right--;
+    for (let i = top; i <= bottom; i++) res.push(matrix[i][right]);
+    right--;
 
-        if(top <= bottom) {
-            for (let i = right; i >= left; i--) res.push(matrix[bottom][i]);
-            bottom--;
-        }
-
-        if(left <= right) {
-            for (let i = bottom; i >= top; i--) res.push(matrix[i][left]);
-            left++;
-        }
+    if (top <= bottom) {
+      for (let i = right; i >= left; i--) res.push(matrix[bottom][i]);
+      bottom--;
     }
 
-    return res;
+    if (left <= right) {
+      for (let i = bottom; i >= top; i--) res.push(matrix[i][left]);
+      left++;
+    }
+  }
+
+  return res;
 };
 ```
 
