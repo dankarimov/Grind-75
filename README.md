@@ -909,3 +909,23 @@ var spiralOrder = function(matrix) {
 ```
 
 _O(n)_
+
+## [5. Subsets](https://leetcode.com/problems/subsets/)
+
+```HTML
+var subsets = function(nums) {
+  let res = [[]];
+
+  for (let n of nums) {
+    let resLen = res.length;
+    for (i = 0; i < resLen; i++) {
+      let sub = res[i];
+      res.push([...sub, n]);
+    }
+  }
+
+  return res;
+}
+```
+
+_O(N \* 2N)_
