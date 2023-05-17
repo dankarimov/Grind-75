@@ -914,12 +914,13 @@ _O(n)_
 
 ```HTML
 var subsets = function(nums) {
-  let res = [[]];
+  const res = [[]];
 
   for (let n of nums) {
-    let resLen = res.length;
+    const resLen = res.length;
+
     for (i = 0; i < resLen; i++) {
-      let sub = res[i];
+      const sub = res[i];
       res.push([...sub, n]);
     }
   }
