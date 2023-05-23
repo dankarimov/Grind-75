@@ -930,3 +930,27 @@ var subsets = function(nums) {
 ```
 
 _O(N \* 2N)_
+
+## [8. Unique Paths](https://leetcode.com/problems/unique-paths/)
+
+```HTML
+var uniquePaths = function(m, n) {
+  let dp = new Array(m)
+    .fill(1).map(_ => new Array(n)
+    .fill(0));
+
+  function helper(m, n) {
+    if(m < 0 || n < 0) return 0;
+    if(m === 0 && n === 0) return 1;
+    if(dp[m][n]) return dp[m][n];
+
+    dp[m][n] = helper(m - 1, n) + helper(m, n - 1)
+
+    return dp[m][n];
+  }
+
+  return helper(m-1,n-1);
+};
+```
+
+_DP, O(m \* n)_
