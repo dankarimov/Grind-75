@@ -940,17 +940,44 @@ var uniquePaths = function(m, n) {
     .fill(0));
 
   function helper(m, n) {
-    if(m < 0 || n < 0) return 0;
-    if(m === 0 && n === 0) return 1;
-    if(dp[m][n]) return dp[m][n];
+    if (m < 0 || n < 0) return 0;
+    if (m === 0 && n === 0) return 1;
+    if (dp[m][n]) return dp[m][n];
 
     dp[m][n] = helper(m - 1, n) + helper(m, n - 1)
 
     return dp[m][n];
   }
 
-  return helper(m-1,n-1);
+  return helper(m-1, n-1);
 };
 ```
 
 _DP, O(m \* n)_
+
+## Week 7
+
+## [1. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+
+```HTML
+var maxArea = function(height) {
+  let max = 0,
+    l = 0,
+    r = height.length - 1;
+
+  while (l < r) {
+    let lHeight = height[l],
+        rHeight = height[r],
+        h = Math.min(lHeight, rHeight),
+        w = r - l;
+    max = Math.max(max, h * w);
+
+    if (lHeight < rHeight) l++;
+    else r--;
+  }
+
+  return max;
+};
+```
+
+_2 pointers, O(log(x))_
