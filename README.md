@@ -981,3 +981,43 @@ var maxArea = function(height) {
 ```
 
 _2 pointers, O(log(x))_
+
+## [2. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+
+```HTML
+var letterCombinations = function(digits) {
+  const res = [],
+    len = digits.length,
+    map = {
+        2: "abc",
+        3: "def",
+        4: "ghi",
+        5: "jkl",
+        6: "mno",
+        7: "pqrs",
+        8: "tuv",
+        9: "wxyz"
+    };
+
+    if (!len) return [];
+
+    function backtrack(pos, str) {
+        if (pos === len) {
+            res.push(str);
+            return;
+        }
+
+        let letters = map[digits[pos]];
+
+        for (let char of letters) {
+            backtrack(pos + 1, str + char);
+        }
+    }
+
+    backtrack(0, "");
+
+    return res;
+};
+```
+
+_Backtracking, O(n \* 4^n)_
