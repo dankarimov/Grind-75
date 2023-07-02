@@ -1021,3 +1021,38 @@ var letterCombinations = function(digits) {
 ```
 
 _Backtracking, O(n \* 4^n)_
+
+## [. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+
+```HTML
+var findAnagrams = function(s, p) {
+  const res = [],
+        freq = {};
+  let left = right = count = 0;
+
+  for (let char of p) freq[char] = freq[char] + 1 || 1;
+
+  while (right < s.length) {
+    const rChar = s[right];
+
+    if (freq[rChar] > 0) count++;
+
+    freq[rChar]--;
+    right++;
+
+    if (count === p.length) res.push(left);
+
+    if (right - left == p.length) {
+      const lChar = s[left];
+
+      if (freq[lChar] >= 0) count--;
+        freq[lChar]++;
+        left++;
+      }
+    }
+
+  return res;
+};
+```
+
+_Sliding Window O(n)_
