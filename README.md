@@ -1022,7 +1022,7 @@ var letterCombinations = function(digits) {
 
 _Backtracking, O(n \* 4^n)_
 
-## [. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+## [4. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
 ```HTML
 var findAnagrams = function(s, p) {
