@@ -238,6 +238,45 @@ var hasCycle = function(head) {
 
 _Two pointers, O(n)_
 
+## [13. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
+
+```HTML
+var MyQueue = function() {
+  this.stack1 = []
+  this.stack2 = []
+};
+
+MyQueue.prototype.push = function(x) {
+  this.stack2.push(x)
+};
+
+MyQueue.prototype.pop = function() {
+  if (this.stack1.length === 0) {
+    while (this.stack2.length > 0) {
+      this.stack1.push(this.stack2.pop())
+    }
+  }
+
+return this.stack1.pop()
+};
+
+MyQueue.prototype.peek = function() {
+  if (this.stack1.length === 0) {
+    while (this.stack2.length > 0) {
+    this.stack  1.push(this.stack2.pop());
+    }
+  }
+
+  return this.stack1[this.stack1.length - 1];
+};
+
+MyQueue.prototype.empty = function() {
+  return this.stack1.length === 0 && this.stack2.length === 0;
+};
+```
+
+_Amortized O(1)_
+
 ## Week 2
 
 ## [1. First Bad Version](https://leetcode.com/problems/first-bad-version/)
