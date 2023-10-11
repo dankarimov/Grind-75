@@ -151,18 +151,17 @@ _Map, O(n)_
 
 ```HTML
 var search = function(nums, target) {
-  let start = 0,
-    end = nums.length - 1,
-    middle = Math.floor((start + end) / 2);
+    let left = 0, 
+        right = nums.length - 1,
+        mid;
 
-  while (nums[middle] !== target && start <= end) {
-    if (target < nums[middle]) end = middle - 1;
-    else start = middle + 1;
+    while (left <= right && nums[mid] !== target) {
+        mid = Math.floor((left + right) / 2);
+        if(nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
 
-    middle = Math.floor((start + end) / 2);
-  }
-
-  return nums[middle] === target ? middle : -1;
+    return nums[mid] === target ? mid : -1;
 };
 ```
 
