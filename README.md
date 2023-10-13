@@ -241,8 +241,8 @@ _Two pointers, O(n)_
 
 ```HTML
 var MyQueue = function() {
-  this.stack1 = []
-  this.stack2 = []
+  this.stack1 = [];
+  this.stack2 = [];
 };
 
 MyQueue.prototype.push = function(x) {
@@ -256,13 +256,13 @@ MyQueue.prototype.pop = function() {
     }
   }
 
-return this.stack1.pop()
+  return this.stack1.pop();
 };
 
 MyQueue.prototype.peek = function() {
   if (this.stack1.length === 0) {
     while (this.stack2.length > 0) {
-    this.stack  1.push(this.stack2.pop());
+    this.stack1.push(this.stack2.pop());
     }
   }
 
@@ -284,13 +284,13 @@ _Amortized O(1)_
 var solution = function(isBadVersion) {
   return function(n) {
     let left = 1,
-        right = n;
+      right = n;
 
     while (left <= right) {
-        let mid = Math.floor((right + left) / 2);
+      let mid = Math.floor((right + left) / 2);
 
-        if (isBadVersion(mid)) right = mid - 1;
-        else left = mid + 1;
+      if (isBadVersion(mid)) right = mid - 1;
+      else left = mid + 1;
     }
 
     return left;
@@ -304,17 +304,17 @@ _Binary search, O(log n)_
 
 ```HTML
 var canConstruct = function(ransomNote, magazine) {
-    if (magazine.length < ransomNote.length) return false;
-    const map = {};
+  if (magazine.length < ransomNote.length) return false;
+  const map = {};
 
-    for (let c of magazine) map[c] = map[c] + 1 || 1;
+  for (let c of magazine) map[c] = map[c] + 1 || 1;
 
-    for (let c of ransomNote) {
-        if(map[c] > 0) map[c]--;
-        else return false;
-    }
+  for (let c of ransomNote) {
+    if(map[c] > 0) map[c]--;
+    else return false;
+  }
 
-    return true;
+  return true;
 };
 ```
 
@@ -324,12 +324,12 @@ _Map, O(n)_
 
 ```HTML
 var climbStairs = function(n, memo = []) {
-    if (n <= 2) return n;
+  if (n <= 2) return n;
 
-    if (memo[n]) return memo[n];
+  if (memo[n]) return memo[n];
 
-    memo[n] = climbStairs(n-1, memo) + climbStairs(n-2, memo);
-    return memo[n];
+  memo[n] = climbStairs(n-1, memo) + climbStairs(n-2, memo);
+  return memo[n];
 };
 ```
 
@@ -379,14 +379,14 @@ _Loop, O(n)_
 
 ```HTML
 var majorityElement = function(nums) {
-    const map = {};
-    let majorityCount = nums.length / 2;
+  const map = {};
+  let majorityCount = nums.length / 2;
 
-    for (let num of nums) map[num] = map[num] + 1 || 1;
+  for (let num of nums) map[num] = map[num] + 1 || 1;
 
-    for(let count in map) {
-      if (map[count] > majorityCount) return count;
-    }
+  for(let count in map) {
+    if (map[count] > majorityCount) return count;
+  }
 };
 ```
 
