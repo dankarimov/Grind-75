@@ -137,7 +137,7 @@ var isAnagram = function(s, t) {
   }
 
   for (let c of t) {
-    if(!map[c] || map[c] < 1) return false;
+    if (!map[c] || map[c] < 1) return false;
     map[c]--;
   }
 
@@ -157,7 +157,7 @@ var search = function(nums, target) {
 
     while (left <= right && nums[mid] !== target) {
         mid = Math.floor((left + right) / 2);
-        if(nums[mid] < target) left = mid + 1;
+        if (nums[mid] < target) left = mid + 1;
         else right = mid - 1;
     }
 
@@ -222,13 +222,13 @@ var hasCycle = function(head) {
   let moveByOne = head,
       moveByTwo = head;
 
-  while( moveByTwo !== null) {
+  while ( moveByTwo !== null) {
     moveByOne = moveByOne?.next;
 
     if (moveByTwo.next === null) return false;
     moveByTwo = moveByTwo.next.next;
 
-    if(moveByOne === moveByTwo) return true;
+    if (moveByOne === moveByTwo) return true;
   }
 
   return false
@@ -310,7 +310,7 @@ var canConstruct = function(ransomNote, magazine) {
   for (let c of magazine) map[c] = map[c] + 1 || 1;
 
   for (let c of ransomNote) {
-    if(map[c] > 0) map[c]--;
+    if (map[c] > 0) map[c]--;
     else return false;
   }
 
@@ -344,7 +344,7 @@ var longestPalindrome = function(s) {
 
     for (let c of s) {
         map[c] = map[c] + 1 || 1;
-        if(map[c] % 2 === 0) max += 2;
+        if (map[c] % 2 === 0) max += 2;
     }
 
     return s.length > max ? max + 1 : max;
@@ -361,7 +361,7 @@ var reverseList = function(head) {
         current = head,
         next;
 
-    while(current) {
+    while (current) {
       next = current.next;
       current.next = prev;
       prev = current;
@@ -384,7 +384,7 @@ var majorityElement = function(nums) {
 
   for (let num of nums) map[num] = map[num] + 1 || 1;
 
-  for(let count in map) {
+  for (let count in map) {
     if (map[count] > majorityCount) return count;
   }
 };
@@ -497,7 +497,7 @@ var maxSubArray = function(nums) {
       cur = 0;
 
   for (let n of nums) {
-    if(cur < 0) cur = 0;
+    if (cur < 0) cur = 0;
 
     cur += n;
 
@@ -574,7 +574,7 @@ var threeSum = function(nums) {
   let res = [];
 
   for (let i = 0; i < nums.length - 2; i++) {
-    if(i > 0 && nums[i] === nums[i - 1]) continue;
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
 
     let left = i + 1,
       right = nums.length - 1;
@@ -584,8 +584,8 @@ var threeSum = function(nums) {
 
       if (sum === 0) {
         res.push([nums[i], nums[left], nums[right]]);
-        while(nums[left] === nums[left + 1]) left++;
-        while(nums[right] === nums[right - 1]) right--;
+        while (nums[left] === nums[left + 1]) left++;
+        while (nums[right] === nums[right - 1]) right--;
       }
 
       if (sum < 0) left++;
